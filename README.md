@@ -23,8 +23,7 @@ These libraries should be linked to your C++ or Fortan program.
 
 ## Running examples:
 
-Here is a description of how to use the compiled libraries. 
-Look at the directory "doc": 
+Here is a description of how to use the compiled libraries. Look at the directory "doc": 
 
 ### C++ example: 
 
@@ -32,8 +31,7 @@ This example shows how to use the library with a C++ code:
  
      cd doc/CBook; make; example.exe; 
 
-The main code used for compilation is "example.cpp".  
-The execution of example.exe produces the XML file cpp.xml with histograms. 
+The main code used for compilation is "example.cpp". The execution of example.exe produces the XML file cpp.xml with histograms. 
 
 ### Fortran example: 
 
@@ -41,8 +39,7 @@ This example shows how to use the library with a Fortran code:
     
     cd doc/FBook; make; example.exe; 
 
-The main code used for compilation is "example.f".   
-The execution of example.exe produces the XML file fortran.xml with histograms. 
+The main code used for compilation is "example.f".  The execution of example.exe produces the XML file fortran.xml with histograms. 
     
 
 Now you can show the histograms located in cpp.xml or fortran.xml files. Run the script "dmelt.py" located in these directories using Jas4pp or DataMelt. This script uses Jython to call the CFBook Java class that retrieves H1D, H2D and other histogram objects and display them.
