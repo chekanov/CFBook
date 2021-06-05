@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=iso-8859-1">
+	<TITLE>CFBook C++ FORTRAN library to book and fill histograms</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 1.1.0  (Linux)">
+	<META NAME="CREATED" CONTENT="20040426;312500">
+	<META NAME="CHANGED" CONTENT="20040426;464500">
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<H1><FONT COLOR="#000066">CFBook package</FONT></H1>
+<P>
+<b>CFBook</b> is a C++/FORTRAN library providing
+histogram booking and related facilities.
+1D and 2D Histograms can be booked and filled in either C++ or FORTRAN
+programs.
+The uniform XML output with histograms
+can be read by jHepWork.
+
+<P><A HREF="./CFBook.tgz">Download CFBook.tgz
+</A>
+
+
+
+<p>
+CFBook is distributed under the GNU.
+This distribution contains the code
+required to build the 2 libraries: cbook (to be linked with C++
+code) and fbook (to be linked with FORTRAN),
+as well as  a few example programs.
+
+<p>
+Compile the C++ library from the cmd_CBook directory (type make) <br> 
+Compile the FORTRAN library from the cmd_FBook directory (type make) 
+
+<p>
+Compile and run examples in the directories: doc/CBook (for C++ programs)
+or doc/FBook (for FORTRAN programs)  
+<p>
+
+The examples will produce XML output files with histograms: cpp.xml
+(filled by C++ example) and fortran.xml (filled by  fortran example).
+Plot histograms using 
+<A HREF="http://projects.hepforge.org/jhepwork/">jHepWork</A> 
+(Class HBook, see examples in hbook.py and hbook2D.py).
+
+
+
+
+
+<P>
+CFBook is based on HCL package   (G.Barrand, OpenScientist package) and GBook package
+(T.Sjostrand and M.Seymour) 
+
+
+
+
+<P><A HREF="http://www.desy.de/~chekanov">S.Chekanov (ANL)
+</A>
+</BODY>
+</HTML>

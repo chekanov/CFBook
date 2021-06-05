@@ -1,0 +1,10 @@
+Example showing how to create a histogram in Fortran and show it using DataMelt:
+It is assumed that you have created C++ library by typing "make" in cmd_FBook/ 
+
+
+1) make                    # compile program 
+2) example.exe             # run to cteate fortran.xml with histogram files 
+3) dmelt_batch.sh cpp.xml  # show histogram in DataMelt 
+
+S.Chekanov
+May 2021 

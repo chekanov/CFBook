@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>example.cpp</title>
+<meta name="Generator" content="SciTE - www.Scintilla.org" />
+<script language="JavaScript" type="text/javascript">
+<!--
+function symbol(id, sym) {
+ if (id.textContent==undefined) {
+ id.innerText=sym; } else {
+ id.textContent=sym; }
+}
+function toggle(id) {
+var thislayer=document.getElementById('ln'+id);
+id-=1;
+var togline=document.getElementById('hd'+id);
+var togsym=document.getElementById('bt'+id);
+if (thislayer.style.display == 'none') {
+ thislayer.style.display='block';
+ togline.style.textDecoration='none';
+ symbol(togsym,'- ');
+} else {
+ thislayer.style.display='none';
+ togline.style.textDecoration='underline';
+ symbol(togsym,'+ ');
+}
+}
+//-->
+</script>
+<style type="text/css">
+.S0 {
+	color: #808080;
+}
+.S2 {
+	font-family: '!Bitstream Vera Serif';
+	color: #007F00;
+	font-size: 9pt;
+}
+.S4 {
+	color: #007F7F;
+}
+.S5 {
+	font-weight: bold;
+	color: #00007F;
+}
+.S6 {
+	color: #7F007F;
+}
+.S9 {
+	color: #7F7F00;
+}
+.S10 {
+	font-weight: bold;
+	color: #000000;
+}
+.S15 {
+	font-family: '!Bitstream Vera Serif';
+	color: #3F703F;
+	font-size: 9pt;
+}
+span {
+	font-family: '!Bitstream Vera Sans';
+	color: #000000;
+	font-size: 9pt;
+}
+</style>
+</head>
+<body bgcolor="#FFFFFF">
+<span>&nbsp; <span class="S9">#include &lt;CBook/CBook.h&gt;</span><br />
+&nbsp; <span class="S9">#include &lt;CBook/H1D.h&gt;</span><br />
+&nbsp; <span class="S9">#include &lt;CBook/H2D.h&gt;</span><br />
+&nbsp; <span class="S9">#include &lt;iostream&gt;</span><br />
+&nbsp; <br />
+&nbsp; <span class="S5">static</span><span class="S0"> </span><span class="S5">double</span><span class="S0"> </span>ShootRandomFlat<span class="S10">();</span><br />
+&nbsp; <span class="S5">static</span><span class="S0"> </span><span class="S5">double</span><span class="S0"> </span>ShootRandomGauss<span class="S10">(</span><span class="S5">double</span><span class="S10">,</span><span class="S5">double</span><span class="S10">);</span><br />
+&nbsp; <span class="S5">static</span><span class="S0"> </span><span class="S5">double</span><span class="S0"> </span>ShootRandomBreitWigner<span class="S10">(</span><span class="S5">double</span><span class="S10">,</span><span class="S5">double</span><span class="S10">);</span><br />
+&nbsp; <br />
+&nbsp; <span class="S2">//////////////////////////////////////////////////////////////////////////////</span><br />
+&nbsp; <span class="S5">int</span><span class="S0"> </span>main<span class="S10">(</span><span class="S5">int</span><span class="S0"> </span>aArgc<span class="S10">,</span><span class="S0"> </span><span class="S5">char</span><span class="S10">**</span><span class="S0"> </span>aArgs<span class="S0"> </span><span class="S10">)</span><br />
+&nbsp; <span class="S2">//////////////////////////////////////////////////////////////////////////////</span><br />
+&nbsp; <span class="S2">// &nbsp;Book and fill some histos.</span><br />
+&nbsp; <span class="S15">//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//</span><br />
+<span id="hd14" onclick="toggle('15')"><span id="bt14">- </span><span class="S10">{</span></span><br />
+<span id="ln15">&nbsp; <br />
+&nbsp; <span class="S2">// book histogram manager</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;</span>CBook<span class="S10">*</span><span class="S0"> &nbsp;</span>cbook<span class="S0"> </span><span class="S10">=</span><span class="S0"> </span>CBook<span class="S10">::</span>Instance<span class="S10">();</span><br />
+&nbsp; <br />
+&nbsp; <br />
+&nbsp; <br />
+&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;</span><span class="S5">int</span><span class="S0"> </span>entries<span class="S0"> </span><span class="S10">=</span><span class="S0"> </span><span class="S4">10000</span><span class="S10">;</span><br />
+&nbsp; <br />
+&nbsp; <span class="S2">// book histograms</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;</span>H1D<span class="S10">*</span><span class="S0"> </span>h1<span class="S0"> </span><span class="S10">=</span><span class="S0"> </span><span class="S5">new</span><span class="S0"> </span>H1D<span class="S10">(</span><span class="S6">"Gauss1"</span><span class="S10">,</span><span class="S4">10</span><span class="S10">,-</span><span class="S4">3</span><span class="S10">,</span><span class="S4">3</span><span class="S10">);</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;</span>H1D<span class="S10">*</span><span class="S0"> </span>h2<span class="S0"> </span><span class="S10">=</span><span class="S0"> </span><span class="S5">new</span><span class="S0"> </span>H1D<span class="S10">(</span><span class="S6">"Gauss2"</span><span class="S10">,</span><span class="S4">5</span><span class="S10">,-</span><span class="S4">5</span><span class="S10">,</span><span class="S4">5</span><span class="S10">);</span><br />
+&nbsp; <span class="S2">// book 2D histograms</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span>H2D<span class="S10">*</span><span class="S0"> </span>histogram<span class="S0"> </span><span class="S10">=</span><span class="S0"> </span><span class="S5">new</span><span class="S0"> </span>H2D<span class="S10">(</span><span class="S6">"Gauss_BW"</span><span class="S10">,</span><span class="S4">10</span><span class="S10">,-</span><span class="S4">5</span><span class="S10">,</span><span class="S4">5</span><span class="S10">,</span><span class="S4">10</span><span class="S10">,-</span><span class="S4">2</span><span class="S10">,</span><span class="S4">2</span><span class="S10">);</span><br />
+&nbsp; <br />
+&nbsp; <br />
+&nbsp; <span class="S2">// fill 1D histograms</span><br />
+<span id="hd31" onclick="toggle('32')"><span id="bt31">- </span><span class="S0">&nbsp;&nbsp;&nbsp;</span><span class="S5">for</span><span class="S10">(</span><span class="S5">int</span><span class="S0"> </span>count<span class="S10">=</span><span class="S4">0</span><span class="S10">;</span>count<span class="S10">&lt;</span>entries<span class="S10">;</span>count<span class="S10">++)</span><span class="S0"> </span><span class="S10">{</span></span><br />
+<span id="ln32">&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>h1<span class="S10">-&gt;</span>fill<span class="S10">(</span>ShootRandomGauss<span class="S10">(</span><span class="S4">1</span><span class="S10">,</span><span class="S4">2</span><span class="S10">),</span><span class="S4">1.4</span><span class="S10">);</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>h2<span class="S10">-&gt;</span>fill<span class="S10">(</span>ShootRandomGauss<span class="S10">(</span><span class="S4">1</span><span class="S10">,</span><span class="S4">2</span><span class="S10">),</span><span class="S4">1.5</span><span class="S10">);</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;</span><span class="S10">}</span><br /></span>
+&nbsp; <br />
+&nbsp; <span class="S2">// fill 2D histogram</span><br />
+<span id="hd37" onclick="toggle('38')"><span id="bt37">- </span><span class="S0">&nbsp;&nbsp;&nbsp;</span><span class="S5">for</span><span class="S10">(</span><span class="S5">int</span><span class="S0"> </span>count<span class="S10">=</span><span class="S4">0</span><span class="S10">;</span>count<span class="S10">&lt;</span>entries<span class="S10">;</span>count<span class="S10">++)</span><span class="S0"> </span><span class="S10">{</span></span><br />
+<span id="ln38">&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>histogram<span class="S10">-&gt;</span>fill<span class="S10">(</span>ShootRandomGauss<span class="S10">(</span><span class="S4">1</span><span class="S10">,</span><span class="S4">2</span><span class="S10">),</span>ShootRandomBreitWigner<span class="S10">(</span><span class="S4">0</span><span class="S10">,</span><span class="S4">1</span><span class="S10">),</span><span class="S4">0.8</span><span class="S10">);</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;</span><span class="S10">}</span><br /></span>
+&nbsp; <br />
+&nbsp; <br />
+&nbsp; <span class="S2">// check the size of CBook manager</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;</span>std<span class="S10">::</span>cout<span class="S0"> </span><span class="S10">&lt;&lt;</span><span class="S0"> </span><span class="S6">" size so far = "</span><span class="S0"> </span><span class="S10">&lt;&lt;</span><span class="S0"> </span>cbook<span class="S10">-&gt;</span>size<span class="S10">()</span><span class="S0"> </span><span class="S10">&lt;&lt;</span><span class="S0"> </span>std<span class="S10">::</span>endl<span class="S10">;</span><br />
+&nbsp; <br />
+&nbsp; <br />
+&nbsp; <span class="S2">// book another histogram</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span>H1D<span class="S10">*</span><span class="S0"> </span>h3<span class="S0"> </span><span class="S10">=</span><span class="S0"> </span><span class="S5">new</span><span class="S0"> </span>H1D<span class="S10">(</span><span class="S6">"Gauss3"</span><span class="S10">,</span><span class="S4">20</span><span class="S10">,-</span><span class="S4">3</span><span class="S10">,</span><span class="S4">3</span><span class="S10">);</span><br />
+&nbsp; <br />
+&nbsp; <span class="S2">// fiill it</span><br />
+<span id="hd50" onclick="toggle('51')"><span id="bt50">- </span><span class="S0">&nbsp;&nbsp;&nbsp;</span><span class="S5">for</span><span class="S10">(</span><span class="S5">int</span><span class="S0"> </span>count<span class="S10">=</span><span class="S4">0</span><span class="S10">;</span>count<span class="S10">&lt;</span>entries<span class="S10">;</span>count<span class="S10">++)</span><span class="S0"> </span><span class="S10">{</span></span><br />
+<span id="ln51">&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>h1<span class="S10">-&gt;</span>fill<span class="S10">(</span>ShootRandomGauss<span class="S10">(</span><span class="S4">1</span><span class="S10">,</span><span class="S4">2</span><span class="S10">),</span><span class="S4">1.4</span><span class="S10">);</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>h2<span class="S10">-&gt;</span>fill<span class="S10">(</span>ShootRandomGauss<span class="S10">(</span><span class="S4">1</span><span class="S10">,</span><span class="S4">2</span><span class="S10">),</span><span class="S4">1.0</span><span class="S10">);</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;</span><span class="S10">}</span><br /></span>
+&nbsp; <br />
+&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;</span>std<span class="S10">::</span>cout<span class="S0"> </span><span class="S10">&lt;&lt;</span><span class="S0"> </span><span class="S6">" size so far = "</span><span class="S0"> </span><span class="S10">&lt;&lt;</span><span class="S0"> </span>cbook<span class="S10">-&gt;</span>size<span class="S10">()</span><span class="S0"> </span><span class="S10">&lt;&lt;</span><span class="S0"> </span>std<span class="S10">::</span>endl<span class="S10">;</span><br />
+&nbsp; <br />
+&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;</span><span class="S2">// print on screen</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;</span>cbook<span class="S10">-&gt;</span>print<span class="S10">();</span><br />
+&nbsp; <br />
+&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;</span><span class="S2">// write to XML file</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;</span>cbook<span class="S10">-&gt;</span>write<span class="S10">(</span><span class="S6">"cpp.xml"</span><span class="S10">);</span><br />
+&nbsp; <br />
+&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;</span><span class="S2">// clear all histograms</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;</span>cbook<span class="S10">-&gt;</span>clear<span class="S10">();</span><br />
+&nbsp; <br />
+&nbsp; <br />
+&nbsp; <br />
+&nbsp; <span class="S0">&nbsp;&nbsp;</span><span class="S5">return</span><span class="S0"> </span><span class="S4">0</span><span class="S10">;</span><br />
+&nbsp; <span class="S10">}</span><br /></span>
+&nbsp; <br />
+&nbsp; <br />
+&nbsp; <span class="S15">/// just to help to fill histograms</span><br />
+&nbsp; <span class="S9">#include &lt;stdlib.h&gt; </span><span class="S2">//rand</span><br />
+&nbsp; <span class="S9">#include &lt;math.h&gt;</span><br />
+<span id="hd75" onclick="toggle('76')"><span id="bt75">- </span><span class="S9">#ifndef M_PI</span></span><br />
+<span id="ln76">&nbsp; <span class="S9">#define M_PI &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1415926535897931160E0</span><br />
+&nbsp; <span class="S9">#define M_PI_2 &nbsp;&nbsp;&nbsp;&nbsp;1.5707963267948965580E0</span><br />
+&nbsp; <span class="S9">#endif</span><br /></span>
+&nbsp; <span class="S2">//////////////////////////////////////////////////////////////////////////////</span><br />
+&nbsp; <span class="S5">double</span><span class="S0"> </span>ShootRandomFlat<span class="S10">(</span><br />
+&nbsp; <span class="S10">)</span><br />
+&nbsp; <span class="S2">//////////////////////////////////////////////////////////////////////////////</span><br />
+&nbsp; <span class="S2">// Shoot random numbers according a flat distribution.</span><br />
+&nbsp; <span class="S15">//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//</span><br />
+<span id="hd85" onclick="toggle('86')"><span id="bt85">- </span><span class="S10">{</span></span><br />
+<span id="ln86">&nbsp; <span class="S0">&nbsp;&nbsp;</span><span class="S5">double</span><span class="S0"> </span>value<span class="S0"> &nbsp;</span><span class="S10">=</span><span class="S0"> </span><span class="S10">(</span><span class="S5">double</span><span class="S10">)::</span>rand<span class="S10">();</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;</span>value<span class="S0"> </span><span class="S10">/=</span><span class="S0"> </span><span class="S10">(</span><span class="S5">double</span><span class="S10">)</span>RAND_MAX<span class="S10">;</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;</span><span class="S5">return</span><span class="S0"> </span>value<span class="S10">;</span><br />
+&nbsp; <span class="S10">}</span><br /></span>
+&nbsp; <span class="S2">//////////////////////////////////////////////////////////////////////////////</span><br />
+&nbsp; <span class="S5">double</span><span class="S0"> </span>ShootRandomGauss<span class="S10">(</span><br />
+&nbsp; <span class="S0">&nbsp;</span><span class="S5">double</span><span class="S0"> </span>aMean<br />
+&nbsp; <span class="S10">,</span><span class="S5">double</span><span class="S0"> </span>aStdDev<br />
+&nbsp; <span class="S10">)</span><br />
+&nbsp; <span class="S2">//////////////////////////////////////////////////////////////////////////////</span><br />
+&nbsp; <span class="S2">// &nbsp;Shoot random numbers according a</span><br />
+&nbsp; <span class="S2">// gaussian distribution of mean 0 and sigma 1.</span><br />
+&nbsp; <span class="S15">//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//</span><br />
+<span id="hd99" onclick="toggle('100')"><span id="bt99">- </span><span class="S10">{</span></span><br />
+<span id="ln100">&nbsp; <span class="S0">&nbsp;&nbsp;</span><span class="S5">double</span><span class="S0"> </span>v1<span class="S10">,</span>v2<span class="S10">,</span>r<span class="S10">,</span>fac<span class="S10">;</span><br />
+<span id="hd101" onclick="toggle('102')"><span id="bt101">- </span><span class="S0">&nbsp;&nbsp;</span><span class="S5">do</span><span class="S0"> </span><span class="S10">{</span></span><br />
+<span id="ln102">&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span>v1<span class="S0"> </span><span class="S10">=</span><span class="S0"> </span><span class="S4">2.0</span><span class="S0"> </span><span class="S10">*</span><span class="S0"> </span>ShootRandomFlat<span class="S10">()</span><span class="S0"> </span><span class="S10">-</span><span class="S0"> </span><span class="S4">1.0</span><span class="S10">;</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span>v2<span class="S0"> </span><span class="S10">=</span><span class="S0"> </span><span class="S4">2.0</span><span class="S0"> </span><span class="S10">*</span><span class="S0"> </span>ShootRandomFlat<span class="S10">()</span><span class="S0"> </span><span class="S10">-</span><span class="S0"> </span><span class="S4">1.0</span><span class="S10">;</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;&nbsp;&nbsp;</span>r<span class="S0"> </span><span class="S10">=</span><span class="S0"> </span>v1<span class="S10">*</span>v1<span class="S0"> </span><span class="S10">+</span><span class="S0"> </span>v2<span class="S10">*</span>v2<span class="S10">;</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;</span><span class="S10">}</span><span class="S0"> </span><span class="S5">while</span><span class="S0"> </span><span class="S10">(</span><span class="S0"> </span>r<span class="S0"> </span><span class="S10">&gt;</span><span class="S0"> </span><span class="S4">1.0</span><span class="S0"> </span><span class="S10">);</span><br /></span>
+&nbsp; <span class="S0">&nbsp;&nbsp;</span>fac<span class="S0"> </span><span class="S10">=</span><span class="S0"> </span><span class="S10">::</span>sqrt<span class="S10">(-</span><span class="S4">2.0</span><span class="S10">*::</span>log<span class="S10">(</span>r<span class="S10">)/</span>r<span class="S10">);</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;</span><span class="S5">return</span><span class="S0"> </span><span class="S10">(</span>v2<span class="S0"> </span><span class="S10">*</span><span class="S0"> </span>fac<span class="S10">)</span><span class="S0"> </span><span class="S10">*</span><span class="S0"> </span>aStdDev<span class="S0"> </span><span class="S10">+</span><span class="S0"> </span>aMean<span class="S10">;</span><br />
+&nbsp; <span class="S10">}</span><br /></span>
+&nbsp; <span class="S2">//////////////////////////////////////////////////////////////////////////////</span><br />
+&nbsp; <span class="S5">double</span><span class="S0"> </span>ShootRandomBreitWigner<span class="S10">(</span><br />
+&nbsp; <span class="S0">&nbsp;</span><span class="S5">double</span><span class="S0"> </span>aMean<br />
+&nbsp; <span class="S10">,</span><span class="S5">double</span><span class="S0"> </span>aGamma<br />
+&nbsp; <span class="S10">)</span><br />
+&nbsp; <span class="S2">//////////////////////////////////////////////////////////////////////////////</span><br />
+&nbsp; <span class="S15">//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//</span><br />
+<span id="hd116" onclick="toggle('117')"><span id="bt116">- </span><span class="S10">{</span></span><br />
+<span id="ln117">&nbsp; <span class="S0">&nbsp;&nbsp;</span><span class="S5">double</span><span class="S0"> </span>rval<span class="S0"> </span><span class="S10">=</span><span class="S0"> </span><span class="S4">2.0</span><span class="S0"> </span><span class="S10">*</span><span class="S0"> </span>ShootRandomFlat<span class="S10">()</span><span class="S0"> </span><span class="S10">-</span><span class="S0"> </span><span class="S4">1.0</span><span class="S10">;</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;</span><span class="S5">double</span><span class="S0"> </span>displ<span class="S0"> </span><span class="S10">=</span><span class="S0"> </span><span class="S4">0.5</span><span class="S0"> </span><span class="S10">*</span><span class="S0"> </span>aGamma<span class="S0"> </span><span class="S10">*</span><span class="S0"> </span><span class="S10">::</span>tan<span class="S10">(</span>rval<span class="S0"> </span><span class="S10">*</span><span class="S0"> </span>M_PI_2<span class="S10">);</span><br />
+&nbsp; <span class="S0">&nbsp;&nbsp;</span><span class="S5">return</span><span class="S0"> </span>aMean<span class="S0"> </span><span class="S10">+</span><span class="S0"> </span>displ<span class="S10">;</span><br />
+&nbsp; <span class="S10">}</span><br /></span>
+&nbsp; <span class="S0"></span></span>
+</body>
+</html>

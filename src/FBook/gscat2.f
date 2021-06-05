@@ -1,0 +1,24 @@
+C***  END GBOOK  *****************************************************
+C-----------------------------------------------------------------------
+C  SOME NEW ROUTINES WRITTEN BY MIKE SEYMOUR:
+C  GSCAT2(ID,X,Y,N)
+C     EXACTLY THE SAME AS GFILL2(ID,X,Y,1.0) EXCEPT THAT ONLY THE
+C     FIRST N CALLS ARE USED. VERY USEFUL FOR MAKING SCATTER PLOTS
+C     THAT ALL HAVE THE SAME NUMBER OF ENTRIES.
+C
+C  GAREA(ID,AREA)
+C     RESCALE HISTOGRAM SO THAT AREA UNDER IT BECOMES AREA
+C
+C  GACCUM(ID)
+C     REPLACE HISTOGRAM BY A CUMULATIVE SUM OF ITS ENTRIES
+C-----------------------------------------------------------------------
+      SUBROUTINE GSCAT2(ID,X,Y,N)
+      IMPLICIT INTEGER (I-N)
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+      PARAMETER (NSIZE=200000,NMAX=2000)
+      COMMON /GBOOK/ A(NSIZE)
+      IF (ID.GT.NMAX) RETURN
+      ONE=1
+      IS=A(ID+2)+0.5
+      IF (INT(A(IS+9)+0.5).LT.N) CALL GFILL2(ID,X,Y,ONE)
+      END
