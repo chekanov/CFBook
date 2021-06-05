@@ -17,6 +17,7 @@ To compile this library, you need g++, ar, gfortran and make tool.
     cd cmd_FBook
     make
     
+These commands creates object libraries in the directory "lib".
 These libraries need to be linked to your C++ or Fortan program.   
 
 
